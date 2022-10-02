@@ -8,17 +8,19 @@ function App() {
   const [todo, setTodo] = useState([]);
 
   return (
-    <div className="App">
-      <div>
-        <Header
-          input={input}
-          setInput={setInput}
-          todo={todo}
-          setTodo={setTodo}
-        />
-      </div>
-      <div>
-        <FormList todo={todo} setTodo={setTodo} />
+    <div className="App bg-dark bg-gradient container mt-5 w-75 ">
+      <div className="w-100 p-2">
+        <div>
+          <Header
+            input={input}
+            setInput={setInput}
+            todo={todo}
+            setTodo={setTodo}
+          />
+        </div>
+        <div>
+          <FormList todo={todo} setTodo={setTodo} />
+        </div>
       </div>
     </div>
   );

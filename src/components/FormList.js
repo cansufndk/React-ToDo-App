@@ -13,9 +13,9 @@ function FormList({ todo, setTodo }) {
     );
   };
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center mt-5 list-item">
+    <div className="d-flex flex-column justify-content-center align-items-center mt-5 list-item mb-4">
       {todo.map((e) => (
-        <li className="mb-3  w-75 list-item d-flex" key={e.id}>
+        <li className="d-flex mb-3 w-100 list-item " key={e.id}>
           <input
             value={e.title}
             className={`form-control ${
@@ -23,9 +23,9 @@ function FormList({ todo, setTodo }) {
             }`}
             onChange={(e) => e.preventDefault()}
           />
-          <div className="form-check d-flex">
+          <div className="form-check d-flex ">
             <button
-              className="btn  btn-outline-success me-2"
+              className="btn btn-outline-success me-1 "
               onClick={() => checkTodo(e)}
             >
               <i className="fas fa-check-circle"></i>

@@ -1,21 +1,13 @@
- #root, html{
+ *#root, html{
   background:linear-gradient(to left, rgb(228, 194, 147), rgb(250, 184, 85));
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 .App{
-  background-color:darkslategrey;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: #fff;
-  width: 40%;
-  height: 75%;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,30%);
   border-radius: 10px;
-  box-shadow: 7px 7px 15px #000;
-}
-
-.list-item{
-  list-style: none;
+  box-shadow: 8px 8px 15px #000;
 }
