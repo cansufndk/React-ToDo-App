@@ -2,13 +2,17 @@ import { Button, FormControl } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 
 function Header({ input, setInput, todo, setTodo }) {
-  const addTodo = (e) => {
+  const addTodo = () => {
     if (input === "") {
       alert("Please Add To Do");
     } else {
       setTodo([...todo, { id: uuidv4(), title: input, completed: false }]);
       setInput("");
     }
+  };
+
+  const onFormControlChange = ({ target }) => {
+    setInput(target.value);
   };
 
   return (
@@ -19,12 +23,12 @@ function Header({ input, setInput, todo, setTodo }) {
         <form className="w-100">
           <FormControl
             className="form-control"
-            placeHolder="Add Todo"
+            placeholder="Add Todo"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={onFormControlChange}
           ></FormControl>
         </form>
-        <Button className="ms-3 " type="submit" onClick={() => addTodo()}>
+        <Button className="ms-3 " type="submit" onClick={addTodo}>
           Add
         </Button>
       </div>
