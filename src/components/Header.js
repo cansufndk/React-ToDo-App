@@ -1,35 +1,37 @@
-import { Button, FormControl } from "react-bootstrap";
-import { v4 as uuidv4 } from "uuid";
+import { useContext } from "react"
+import { Button, FormControl, InputGroup, Row, Col, Form, Container } from "react-bootstrap"
+import { TodoListContext } from "../contexts/TodoListContext"
 
-function Header({ input, setInput, todo, setTodo }) {
-  const addTodo = (e) => {
-    if (input === "") {
-      alert("Please Add To Do");
-    } else {
-      setTodo([...todo, { id: uuidv4(), title: input, completed: false }]);
-      setInput("");
-    }
-  };
+// { input, setInput, todo, setTodo }
+function Header() {
+  const { input, setInput, dispatch } = useContext(TodoListContext)
 
   return (
-    <div className="d-flex flex-column align-items-center">
-      <h1 className="mt-5">Todo~List</h1>
-
-      <div className="d-flex mt-5 w-100">
-        <form className="w-100">
-          <FormControl
-            className="form-control"
-            placeHolder="Add Todo"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          ></FormControl>
-        </form>
-        <Button className="ms-3 " type="submit" onClick={() => addTodo()}>
-          Add
-        </Button>
-      </div>
-    </div>
-  );
+    <Container fluid>
+      <Row>
+        <Col>
+          <h1 className="text-white text-center my-3">Todo~List</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Form onSubmit={(e) => (e.preventDefault(), dispatch({ type: "add" }))}>
+            <InputGroup className="mb-3">
+              <FormControl
+                className="form-control"
+                placeHolder="Add Todo"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              ></FormControl>
+              <Button type="submit">
+                Add
+              </Button>
+            </InputGroup>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+  )
 }
 
-export default Header;
+export default Header
