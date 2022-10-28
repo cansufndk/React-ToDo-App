@@ -1,28 +1,25 @@
-import { useState } from "react";
 import "./App.css";
-import FormList from "./components/FormList";
+import { Container, Row, Col } from 'react-bootstrap';
+import TodoList from "./components/TodoList";
 import Header from "./components/Header";
+import { TodoListContextProvider } from "./contexts/TodoListContext"
 
 function App() {
-  const [input, setInput] = useState("");
-  const [todo, setTodo] = useState([]);
-
   return (
-    <div className="App bg-dark bg-gradient container mt-5 w-75 ">
-      <div className="w-100 p-2">
-        <div>
-          <Header
-            input={input}
-            setInput={setInput}
-            todo={todo}
-            setTodo={setTodo}
-          />
-        </div>
-        <div>
-          <FormList todo={todo} setTodo={setTodo} />
-        </div>
-      </div>
-    </div>
+    <TodoListContextProvider>
+      <Container className="mt-5 bg-dark">
+        <Row>
+          <Col>
+            <Header />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <TodoList />
+          </Col>
+        </Row>
+      </Container>
+    </TodoListContextProvider>
   );
 }
 
